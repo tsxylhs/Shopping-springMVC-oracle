@@ -1,5 +1,8 @@
 package com.lhs.shopping.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +21,12 @@ public class userServiceImpl implements userService {
 		// TODO Auto-generated method stub
 		return userDao.insertuser(user);
 	}
-  
+	@Override
+	public User checkuser(User user) {
+		// TODO Auto-generated method stub
+		return userDao.checkUserNameAndPassword(user);
+	}
+	public List<Map<String, Object>> queryAll(){
+		return userDao.queryAll();
+	}
 }

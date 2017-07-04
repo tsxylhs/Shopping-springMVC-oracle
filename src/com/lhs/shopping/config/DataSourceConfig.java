@@ -34,7 +34,7 @@ public class DataSourceConfig {
 			ds.setDriverClassName(className);
 			ds.setUsername(userName);
 			ds.setPassword(password);
-			ds.setMaxActive(5);
+			ds.setMaxActive(6);
 		
 			return ds;
 		} catch (Exception e) {
