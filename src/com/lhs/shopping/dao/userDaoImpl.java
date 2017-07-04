@@ -67,6 +67,18 @@ public class userDaoImpl implements userDao {
 	));
 	return null==list||list.size()==0?null:list;
 	}
-	
+	 
+	public int deleteUser(User user){
+	      String sql="delete  USERS where userId=?";
+	    
+	      int i=jdbcTemplate.update(sql, new Object[] { user.getUserId()},new int[] { java.sql.Types.INTEGER }
+	            
+	    		  );
+	      System.out.println(i+"我是删除参数");
+	      return i;
+	      
+	    		  
+		
+	}
 	
 }

@@ -29,4 +29,7 @@ public class userServiceImpl implements userService {
 	public List<Map<String, Object>> queryAll(){
 		return userDao.queryAll();
 	}
+	public int deleteUser(User user){
+		return userDao.deleteUser(user);
+	}
 }

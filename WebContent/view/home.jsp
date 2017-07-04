@@ -13,6 +13,10 @@
 		<h4>
 			<a href="../ShoppingWeb/register.jsp">注册</a>
 		</h4>
+		<c:if test="${err==1}">
+	<h6 color="red">账号或者密码错误！</h6>
+
+</c:if>
 	</div>
 	<table border="1" align="center">
 		<tr>

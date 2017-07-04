@@ -10,4 +10,5 @@ public interface userDao {
        public int insertuser(User user);
        public User   checkUserNameAndPassword(User user);   public int allpage();
        public  List<User> selectuser(int pageX,int pageoN);
-}
+       public int deleteUser(User user);
+       }

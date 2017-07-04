@@ -9,4 +9,5 @@ public interface userService {
     public int insertuser(User user);
     public User checkuser(User user);
     public List<Map<String, Object>> queryAll();
+    public int deleteUser(User user);
 }
