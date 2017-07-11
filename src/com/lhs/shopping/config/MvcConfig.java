@@ -16,12 +16,15 @@ public class MvcConfig extends WebMvcConfigurerAdapter   {
 	//静态资源映射
 	//addResourceHandler()方法指定url，该url后连接静态文件，对应着addResourceLoaction()方法目录所对应的静态文件
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    	registry.addResourceHandler("/assets/css/**").addResourceLocations("/assets/css/");
-        registry.addResourceHandler("/assets/img/**").addResourceLocations("/assets/img/");
+    	registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/img/**").addResourceLocations("/img/");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/rev-slider/**").addResourceLocations("/rev-slider/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
-        registry.addResourceHandler("/assets/fonts/**").addResourceLocations("/assets/fonts/");
-        registry.addResourceHandler("/*.html").addResourceLocations("/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/fonts/");
+        registry.addResourceHandler("/font/**").addResourceLocations("/font/");
+       registry.addResourceHandler("/*.html").addResourceLocations("/view/");
+       
         
     }
 

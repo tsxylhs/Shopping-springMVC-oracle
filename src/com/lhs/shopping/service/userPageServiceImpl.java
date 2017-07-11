@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.lhs.shopping.dao.iface.userDao;
+import com.lhs.shopping.entity.ShoppingUser;
 import com.lhs.shopping.entity.User;
 import com.lhs.shopping.service.iface.userPageService;
 @Service("userPageService")
@@ -29,7 +30,7 @@ public class userPageServiceImpl implements userPageService {
 	}
 
 	@Override
-	public List<User> selectuser(int pageX, int pageoN) {
+	public List<ShoppingUser> selectuser(int pageX, int pageoN) {
 		// TODO Auto-generated method stub
 		return userDao.selectuser(pageX, pageoN);
 	}

@@ -10,7 +10,11 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.lhs.shopping.dao.iface.userDao;
+
+import com.lhs.shopping.entity.ShoppingUser;
 import com.lhs.shopping.entity.User;
+import com.lhs.shopping.entity.users;
+
 
 
 @Repository("userDao")
@@ -19,24 +23,25 @@ public class userDaoImpl implements userDao {
 	JdbcTemplate jdbcTemplate;
 	
 	public List<Map<String, Object>> queryAll() {
-		String sql="select * from users";
-		List<String> list = jdbcTemplate.queryForList("select USERID FROM USERS",String.class);
+		String sql="select * from shoppinguser";
+		List<String> list = jdbcTemplate.queryForList("select USERID FROM shoppinguser",String.class);
 		System.out.println(list.size());
 		return jdbcTemplate.queryForList(sql);
 	}
 
 	@Override
-	public int insertuser(User user) {
-		String sql="insert into users values(user_id.nextval,?,?,?,?,?)";
+	public int insertuser(users user) {
+		String sql="insert into users values(user_id.nextval,?,?,?)";
 		System.out.println(user.toString());
-		int count=jdbcTemplate.update(sql, new Object[]{user.getUsername(),user.getUserpassword(),user.getAge(),user.getSex(),user.getAddress()});
+		int count=jdbcTemplate.update(sql, new Object[]{user.getUsername(),user.getUserpassword(),user.getUserphone()});
 		return count;
 	}
 
-	public User checkUserNameAndPassword(User user){
+	public users checkUserNameAndPassword(users user){
+		System.out.println(user.getUsername()+""+user.getUserpassword());
 		String sql="select * from users where username=? and userpassword=?";
-		List<User> list=jdbcTemplate.query(sql,new Object[]{user.getUsername(),user.getUserpassword()},((RowMapper<User>)(rs,index)->
-			new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6))
+		List<users> list=jdbcTemplate.query(sql,new Object[]{user.getUsername(),user.getUserpassword()},((RowMapper<users>)(rs,index)->
+			new users(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4))
 		));
 		return null==list||list.size()==0?null:list.get(0);
 	}
@@ -53,23 +58,23 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int allpage() {
-				String sql =" select count(*) from users";
+				String sql =" select count(*) from shoppinguser";
 				Number number=  jdbcTemplate.queryForObject(sql, Integer.class);
 			    return (number != null ? number.intValue() : 0);	
 			    
 	}
 
 	@Override
-	public List<User> selectuser(int pageX, int pageoN) {
-	       String sql="select * from users where rowid in(select rid from (select rownum rn,rid from(select rowid rid,userId from users) where rownum<?) where rn>?)";
-		List<User> list=jdbcTemplate.query(sql,new Object[]{pageX*pageoN,(pageX-1)*pageoN},((RowMapper<User>)(rs,index)->
-		new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getString(6))
+	public List<ShoppingUser> selectuser(int pageX, int pageoN) {
+	       String sql="select * from shoppinguser where rowid in(select rid from (select rownum rn,rid from(select rowid rid,userId from shoppinguser) where rownum<?) where rn>?)";
+		List<ShoppingUser> list=jdbcTemplate.query(sql,new Object[]{pageX*pageoN,(pageX-1)*pageoN},((RowMapper<ShoppingUser>)(rs,index)->
+		new ShoppingUser(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4))
 	));
 	return null==list||list.size()==0?null:list;
 	}
 	 
-	public int deleteUser(User user){
-	      String sql="delete  USERS where userId=?";
+	public int deleteUser(ShoppingUser user){
+	      String sql="delete  shoppinguser where userId=?";
 	    
 	      int i=jdbcTemplate.update(sql, new Object[] { user.getUserId()},new int[] { java.sql.Types.INTEGER }
 	            
@@ -80,5 +85,13 @@ public class userDaoImpl implements userDao {
 	    		  
 		
 	}
+
+
+
+
+
+
+
+
 	
 }

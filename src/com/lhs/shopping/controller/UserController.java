@@ -15,7 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.lhs.shopping.service.iface.userPageService;
 import com.lhs.shopping.service.iface.userService;
 import com.lhs.shopping.dao.iface.userDao;
+
+import com.lhs.shopping.entity.ShoppingUser;
 import com.lhs.shopping.entity.User;
+import com.lhs.shopping.entity.users;
 
 @Controller
 public class UserController {
@@ -24,8 +27,10 @@ public class UserController {
 	@Resource
 	userPageService userPageService;
 	int pageOn = 5;
+	/*
+	
 	@RequestMapping("register")
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, User user) {
+	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, users user) {
 		ModelAndView mv = new ModelAndView();
 		if (userService.insertuser(user) != 0) {
 
@@ -40,21 +45,23 @@ public class UserController {
 	}
 
 	@RequestMapping("login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, User user) {
-		System.out.println(user.getUsername() + "" + user.getUserpassword());
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, users user) {
+
 		ModelAndView mv = new ModelAndView();
 		int pageXX=1;
 		String pageX = request.getParameter("pageNos");
 		if(pageX!=null){
 			 pageXX=Integer.parseInt(pageX);
 		}
-		User user1 = new User();
+		users user1 = new users();
+	    user1=userService.checkuser(user);
 		int pageall = userPageService.allpage();
-		if (userService.checkuser(user) != null) {
-			mv.setViewName("/view/home");
-			List<User> list = userPageService.selectuser(pageXX, pageOn);
+		if (user1 != null) {
+			mv.setViewName("/view/index");
+			List<ShoppingUser> list = userPageService.selectuser(pageXX, pageOn);
 			mv.addObject("recordCount", pageall);
-			mv.addObject("user", user1);
+			//mv.addObject("user", user1);
+			request.getSession().setAttribute("user", user1);
 			mv.addObject("pageNos", pageXX);
 			mv.addObject("users", list);
 
@@ -66,12 +73,12 @@ public class UserController {
 			return mv;
 		}
 	}
-
+*/
 	@RequestMapping("userdelete")
 	public ModelAndView userdelete(HttpServletRequest req, HttpServletResponse response) {
 		System.out.println(req.getParameter("userid"));
 		ModelAndView mv=new ModelAndView();
-	        User user=new User();
+	        ShoppingUser user=new ShoppingUser();
 	        int err=1;
 	        user.setUserId(Integer.parseInt( req.getParameter("userid")));
 	        if(userService.deleteUser(user)!=0){
@@ -83,7 +90,7 @@ public class UserController {
 	    		User user1 = new User();
 	    		int pageall = userPageService.allpage();
 	    			mv.setViewName("/view/home");
-	    			List<User> list = userPageService.selectuser(pageXX, pageOn);
+	    			List<ShoppingUser> list = userPageService.selectuser(pageXX, pageOn);
 	    			 mv.addObject("err",err);
 	    			mv.addObject("recordCount", pageall);
 	    			mv.addObject("pageNos", pageXX);
@@ -116,7 +123,7 @@ public class UserController {
 		 */
 		    int pageall = userPageService.allpage();
 			mv.setViewName("/view/home");
-			List<User> list = userPageService.selectuser(pageXX, pageOn);
+			List<ShoppingUser> list = userPageService.selectuser(pageXX, pageOn);
 			mv.addObject("recordCount", pageall);
 			mv.addObject("pageNos", pageXX);
 			mv.addObject("users", list);
