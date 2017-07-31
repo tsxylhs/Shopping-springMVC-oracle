@@ -26,18 +26,17 @@
 			<th>编号</th>
 			<th>用户名</th>
 			<th>密码</th>
-			<th>年龄</th>
-			<th>性别</th>
-			<th>地址</th>
+			
 			<th>操作</th>
 		</tr>
+
 		<c:forEach items="${users}" var="node">
 			<tr>
 				<td><c:out value="${node.userId}"></c:out></td>
 				
-				
-				
-			
+				<td><c:out value="${node.username}"></c:out></td>
+				<td><c:out value="${node.password}"></c:out></td>
+			    
 				<td><a href="userdelete?userid=${node.userId}">删除</a>/<a>修改</a></td>
 			</tr>
 		</c:forEach>

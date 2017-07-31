@@ -175,7 +175,7 @@
        <div class="am-form-group">
         
           <div class="you">
-         会员名   <input type="text" class="am-input-sm" id="doc-ipt-email-1" name="userName" placeholder="请输入用户名">
+         会员名   <input type="text" class="am-input-sm" id="doc-ipt-email-1" name="username" placeholder="请输入用户名">
           </div>
         </div>
          <div class="am-form-group">
@@ -317,12 +317,12 @@
           
           <ul class="am-pagination am-fr">
                 <li class="am-disabled"><a href="#">«</a></li>
-                <li class="am-active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">»</a></li>
+                <li class="am-active"><a href="inituser?pageNos=${pageNos}">1</a></li>
+                <li><a href="inituser?pageNos=${pageNos+1 }">2</a></li>
+                <li><a href="inituser?pageNos=${pageNos+2 }">3</a></li>
+                <li><a href="inituser?pageNos=${pageNos+3 }">4</a></li>
+                <li><a href="inituser?pageNos=${pageNos+4 }">5</a></li>
+                <li><a href="inituser?pageNos=${pageNos+5 }">»</a></li>
               </ul>
           
           

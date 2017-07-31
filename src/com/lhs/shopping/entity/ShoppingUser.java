@@ -5,22 +5,6 @@ public class ShoppingUser {
 	private String Emiail;
 	private String username;
 	private String password;
-	@Override
-	
-	public String toString() {
-		return "ShoppingUser [userId=" + userId + ", Emiail=" + Emiail + ", userName=" + username + ", password="
-				+ password + "]";
-	}
-	public ShoppingUser(int userId, String emiail, String userName, String password) {
-		super();
-		this.userId = userId;
-		this.Emiail = emiail;
-		this.username = userName;
-		this.password = password;
-	}
-	public ShoppingUser() {
-		// TODO Auto-generated constructor stub
-	}
 	public int getUserId() {
 		return userId;
 	}
@@ -33,11 +17,11 @@ public class ShoppingUser {
 	public void setEmiail(String emiail) {
 		Emiail = emiail;
 	}
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
-	public void setUserName(String userName) {
-		this.username = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -45,4 +29,21 @@ public class ShoppingUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public ShoppingUser() {
+		super();
+	}
+	public ShoppingUser(int userId, String emiail, String username, String password) {
+		super();
+		this.userId = userId;
+		Emiail = emiail;
+		this.username = username;
+		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "ShoppingUser [userId=" + userId + ", Emiail=" + Emiail + ", username=" + username + ", password="
+				+ password + "]";
+	}
+
+
 }

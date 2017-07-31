@@ -29,16 +29,18 @@ public class managerUserController {
       //添加用户
 	@RequestMapping("register")
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, users user) {
+		System.out.println(user.toString());
 		ModelAndView mv = new ModelAndView();
 		if (userService.insertuser(user) != 0) {
          /*   List<Map<String, Object>> list = userService.queryAll();
 			mv.addObject("users", list);*/
 			mv.setViewName("login");
+			return mv;
 		} else {
 			mv.setViewName("register");
 			return mv;
 		}
-		return mv;
+		
 	}
 	//登陆
 	@SuppressWarnings("unused")
@@ -47,11 +49,12 @@ public class managerUserController {
         ModelAndView mv = new ModelAndView();
 		users user1 = new users();
 	    user1=userService.checkuser(user);
-	    System.out.println(user1.toString());
+	//    System.out.println(user1.toString());
 		if (user1 != null) {
 			
 			List<Map<String, Object>> list=managerService.querypri(user1);
 			for (int i=0;i<list.size();i++) {
+				System.out.println("我是啥子");
 				System.out.println(list.get(i));
 				
 			}
@@ -61,6 +64,7 @@ public class managerUserController {
 			request.getSession().setAttribute("user", user1);
 			return mv;
 		} else {
+			System.out.println("我是二傻子");
 			int err=1;
 			mv.addObject("err",err);
 			mv.setViewName("login");

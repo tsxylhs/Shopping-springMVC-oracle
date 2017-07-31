@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 
-window.location.href="init";
+window.location.href="inituser";
 </script>
 </body>
 </html>

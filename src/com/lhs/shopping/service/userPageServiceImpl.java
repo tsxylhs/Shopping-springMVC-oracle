@@ -26,7 +26,7 @@ public class userPageServiceImpl implements userPageService {
 			pageall = rowall / pageOn;
 		}
 		System.out.println(pageall);
-		return rowall ;
+		return pageall ;
 	}
 
 	@Override

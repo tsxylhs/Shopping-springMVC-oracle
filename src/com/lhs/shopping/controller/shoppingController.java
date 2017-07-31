@@ -17,6 +17,7 @@ public class shoppingController {
 	shoppingUserService shoppingUserService;
 	@RequestMapping("addShoppingUser")
 	public ModelAndView addShoppingUser(HttpServletRequest req,HttpServletResponse  resp, ShoppingUser shoppinguser){
+	            System.out.println(req.getParameter("username"));
 		   System.out.println(shoppinguser.toString());
 		   ModelAndView mv = new  ModelAndView();
 		  int i= shoppingUserService.addShoppingUser(shoppinguser);

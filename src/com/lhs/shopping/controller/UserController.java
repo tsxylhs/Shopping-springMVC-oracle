@@ -27,53 +27,7 @@ public class UserController {
 	@Resource
 	userPageService userPageService;
 	int pageOn = 5;
-	/*
-	
-	@RequestMapping("register")
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, users user) {
-		ModelAndView mv = new ModelAndView();
-		if (userService.insertuser(user) != 0) {
 
-			List<Map<String, Object>> list = userService.queryAll();
-			mv.addObject("users", list);
-			mv.setViewName("login");
-		} else {
-			mv.setViewName("register");
-			return mv;
-		}
-		return mv;
-	}
-
-	@RequestMapping("login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, users user) {
-
-		ModelAndView mv = new ModelAndView();
-		int pageXX=1;
-		String pageX = request.getParameter("pageNos");
-		if(pageX!=null){
-			 pageXX=Integer.parseInt(pageX);
-		}
-		users user1 = new users();
-	    user1=userService.checkuser(user);
-		int pageall = userPageService.allpage();
-		if (user1 != null) {
-			mv.setViewName("/view/index");
-			List<ShoppingUser> list = userPageService.selectuser(pageXX, pageOn);
-			mv.addObject("recordCount", pageall);
-			//mv.addObject("user", user1);
-			request.getSession().setAttribute("user", user1);
-			mv.addObject("pageNos", pageXX);
-			mv.addObject("users", list);
-
-			return mv;
-		} else {
-			int err=1;
-			mv.addObject("err",err);
-			mv.setViewName("login");
-			return mv;
-		}
-	}
-*/
 	@RequestMapping("userdelete")
 	public ModelAndView userdelete(HttpServletRequest req, HttpServletResponse response) {
 		System.out.println(req.getParameter("userid"));

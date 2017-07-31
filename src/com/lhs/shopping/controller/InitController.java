@@ -47,8 +47,6 @@ public class InitController {
 	 
                                           	 
 	      ModelAndView mv=new ModelAndView();
-	     
-		 
 		 mv.setViewName("/view/vipmanager");
 		 List<Map<String, Object>> list = shoppingUserService.queryAll();
 			mv.addObject("shoppingusers", list);

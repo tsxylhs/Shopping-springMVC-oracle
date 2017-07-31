@@ -29,7 +29,7 @@ public class shoppingUserDaoImpl implements shoppingUserDao {
 		System.out.println(shoppinguser.toString());
 		
 		String sql="insert into shoppinguser values(1,?,?,?)";
-		int count=jdbcTemplate.update(sql, new Object[]{shoppinguser.getEmiail(),shoppinguser.getUserName(),shoppinguser.getPassword()});
+		int count=jdbcTemplate.update(sql, new Object[]{shoppinguser.getEmiail(),shoppinguser.getUsername(),shoppinguser.getPassword()});
 		return count;
 	
 	}
