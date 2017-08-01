@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lhs.shopping.dao.iface.managerDao;
 import com.lhs.shopping.entity.Role;
+import com.lhs.shopping.entity.permiss;
 import com.lhs.shopping.entity.rolepri;
 import com.lhs.shopping.entity.users;
 @Repository("managerDao")
@@ -28,7 +29,7 @@ public class managerDaoImpl implements managerDao {
 	}
 	@Override
 	public List<Map<String, Object>> queryRoleperAll() {
-		String sql="  select  r.id,p.id ,r.rolename,p.per_name,p.per_url,p.per_massger from role r"
+		String sql="  select  rp.id,r.rolename,p.per_name,p.per_url,p.per_massger from role r"
 				+ " inner join role_permission rp on r.id=rp.role_id "
 				+ "inner join permission p on rp.permission_id=p.id ";
 		
@@ -36,9 +37,9 @@ public class managerDaoImpl implements managerDao {
 	}
 	@Override
 	public List<Map<String, Object>> queryUserRole() {
-		String sql="select  u.id, u.username, r.rolename,r.massage  from users u"
-				+ " inner join user_role sr on u.id=sr.id "
-				+ "inner join role r on sr.id=r.id";
+		String sql="select  sr.id, u.username, r.rolename,r.massage  from users u"
+				+ " inner join user_role sr on u.id=sr.user_id "
+				+ "inner join role r on sr.role_id=r.id";
 		return jdbcTemplate.queryForList(sql);
 	}
 	@Override
@@ -74,19 +75,32 @@ public class managerDaoImpl implements managerDao {
 		String sql=" insert into role values(1,?,?)";
 		int count=jdbcTemplate.update(sql,new Object[]{role.getRolename(),role.getRolemesage()});
 		
-		return 0;
+		return count;
 	}
 	@Override
-	public int deleteUserRole(int userid, int role_id) {
-	String sql=" delete user_role where user_Id=? and role_id=?";
-	int count=jdbcTemplate.update(sql,new Object[]{userid});
+	public int deleteUserRole(int ur_id) {
+	String sql=" delete from user_role where id=?";
+	int count=jdbcTemplate.update(sql,new Object[]{ur_id});
 	
 		return count;
 	}
 	@Override
-	public int deleteRolePri(int pri_id, int role_id) {
-		String sql=" delete  role_permission  where permission_id=? and role_id=?";
-		int count=jdbcTemplate.update(sql,new Object[]{pri_id,role_id});
+	public int deleteRolePri( int role_id) {
+		String sql=" delete  role_permission  where id=?";
+		int count=jdbcTemplate.update(sql,new Object[]{role_id});
+		
+		return count;
+	}
+	@Override
+	public int deleteuser(int userid) {
+	    String sql="  delete from users where id=?";
+	    		int count=jdbcTemplate.update(sql,new Object[]{userid});
+		return count;
+	}
+	@Override
+	public int addper(permiss permiss) {
+		String sql="insert into permission values(1,?,?,?)";
+		int count=jdbcTemplate.update(sql,new Object[]{permiss.getPer_name(),permiss.getPer_url(),permiss.getPer_messger()});
 		
 		return count;
 	}

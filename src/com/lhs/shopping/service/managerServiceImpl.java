@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.lhs.shopping.entity.Role;
+import com.lhs.shopping.entity.permiss;
 import com.lhs.shopping.entity.rolepri;
 import com.lhs.shopping.entity.users;
 import com.lhs.shopping.service.iface.managerService;
@@ -63,14 +64,24 @@ public class managerServiceImpl implements managerService{
 	}
 
 	@Override
-	public int deleteUserRole(int userid, int roleid) {
+	public int deleteUserRole( int ur_id) {
 		// TODO Auto-generated method stub
-		return managerDao.deleteUserRole(userid,roleid);
+		return managerDao.deleteUserRole(ur_id);
 	}
 	@Override
-	public int deleteRolePri(int pri_id, int role_id) {
+	public int deleteRolePri( int role_id) {
 		// TODO Auto-generated method stub
-		return managerDao.deleteRolePri(pri_id,role_id);
+		return managerDao.deleteRolePri(role_id);
+	}
+	@Override
+	public int deleteUser(int userid) {
+		// TODO Auto-generated method stub
+		return managerDao.deleteuser(userid);
+	}
+	@Override
+	public int addper(permiss permiss) {
+		// TODO Auto-generated method stub
+		return managerDao.addper(permiss);
 	}
 
 

@@ -4,6 +4,10 @@ public class Role {
 private int id;
 private String rolename;
 private String rolemesage;
+@Override
+public String toString() {
+	return "Role [id=" + id + ", rolename=" + rolename + ", rolemesage=" + rolemesage + "]";
+}
 public int getId() {
 	return id;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.lhs.shopping.entity.Role;
+import com.lhs.shopping.entity.permiss;
 import com.lhs.shopping.entity.rolepri;
 import com.lhs.shopping.entity.users;
 
@@ -27,9 +28,13 @@ public interface managerService {
 
 	public int Addrole(Role role);
 
-	public int deleteUserRole(int userid, int roleid);
+	public int deleteUserRole( int ur_id);
 
-	public int deleteRolePri(int pri_id, int role_id);
+	public int deleteRolePri(int pri_id);
+
+	public int deleteUser(int userid);
+
+	public int addper(permiss permiss);
 
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.lhs.shopping.entity.Role;
+import com.lhs.shopping.entity.permiss;
 import com.lhs.shopping.entity.rolepri;
 import com.lhs.shopping.entity.users;
 
@@ -27,9 +28,13 @@ public interface managerDao {
 
 	public int Addrole(Role role);
 
-	public int deleteUserRole(int userid, int roleid);
+	public int deleteUserRole( int roleid);
 
-	public int deleteRolePri(int pri_id, int role_id);
+	public int deleteRolePri(int pri_id);
+
+	public int deleteuser(int userid);
+
+	public int addper(permiss permiss);
 
 
 	
